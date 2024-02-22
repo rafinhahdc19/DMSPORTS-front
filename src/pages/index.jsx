@@ -15,7 +15,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Banner from '../components/banner'
 
-export default function Home() {
+export default function Index() {
   const [vendas, setVendas] = useState([])
   const [slidesPerView, setSlidesPerView] = useState(4);
   const router = useRouter();
