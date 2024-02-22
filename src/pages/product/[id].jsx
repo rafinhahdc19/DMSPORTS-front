@@ -124,7 +124,7 @@ const Index = () => {
 
             <header className='fixed w-full z-10 top-0'><Navbar></Navbar></header>
             {itemToShow && (
-                <main key={itemToShow.id} className='md:mt-[8rem] lg:max-w-6xl drop-shadow-sm rounded mt-[7rem] ml-auto mr-auto'>
+                <main className='md:mt-[8rem] lg:max-w-6xl drop-shadow-sm rounded mt-[7rem] ml-auto mr-auto'>
                     <div className='bg-white rounded w-full p-4 md:pt-5 md:px-14 px-2 text-black'>
 
                         <div className='md:flex'>
@@ -157,7 +157,7 @@ const Index = () => {
                                     <div className='flex justify-center'>
                                         <ul className='flex mr-auto ml-auto gap-4 w-full flex-wrap'>
                                             {itemToShow.tipos.map((Tipo) => (
-                                                <li>
+                                                <li key={Tipo.id}>
                                                     <button onClick={() => { setTipo(Tipo.id), console.log(tipo) }}>
 
                                                         <div key={Tipo.id} className={`border px-4 py-2 duration-200 ease-in-out flex rounded-lg ${tipo == Tipo.id ? "border-green-500" : "border-black/50"}`} style={{ aspectRatio: '2/1', alignItems: 'center', justifyContent: 'center' }}>
