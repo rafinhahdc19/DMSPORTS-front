@@ -249,7 +249,7 @@ export default function Home() {
                     onSlideChange={() => console.log('slide change')}
                   >
                     {itemsV.map((item) => (
-                      <SwiperSlide>
+                      <SwiperSlide key={index}>
                         <Product
                           key={item.id}
                           className="ml-auto mr-auto"
