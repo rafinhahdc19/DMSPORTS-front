@@ -21,7 +21,7 @@ import { Spinner } from '@chakra-ui/react'
 import { Card, Stack, Heading, Text, Button, CardHeader, CardBody, CardFooter, Divider, ButtonGroup } from '@chakra-ui/react'
 import Navbar from '@/components/navbar'
 import axios from 'axios'
-import Cupomforpay from '@/components/Cupomforpay'
+import Cupomforpay from '@/components/cupomforpay'
 
 const Index = () => {
   const router = useRouter()
