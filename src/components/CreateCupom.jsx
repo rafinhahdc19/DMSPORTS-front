@@ -55,9 +55,6 @@ const CreateCupom = ({ attCupom, setAttCupom }) => {
                     },
                 }
             );
-
-            // Verificar se a requisição foi bem-sucedida antes de fechar o modal
-            console.log(response)
             if (response.status === 201) {
                 setLoading(false)
                 onClose();

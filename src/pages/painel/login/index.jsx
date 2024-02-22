@@ -37,12 +37,10 @@ const Index = () => {
       const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + '/auth/login', formData);
       Cookies.set('token', response.data.token, { expires: 7, path: '/' });
       setLoading(false);
-      console.log(response.data.message);
       setErro('');
       setSuccess(response.data.message);
       router.push("/painel/admin");
     } catch (error) {
-      console.log(error);
       setLoading(false);
       setSuccess('');
       try {

@@ -64,8 +64,6 @@ const Index = () => {
     }
 
 
-    console.log("aq", existingCar, tipo)
-
     if (existingCar) {
       existingCar.quantity = valor;
     } else {
@@ -148,11 +146,15 @@ const Index = () => {
         const itensfromdb = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/car", {
           slugs: itenCar
         }).then(function (response) {
-          console.log("cavalo", response.data.itens)
           setdataar(response.data.itens)
 
         }).catch(function (error) {
-          console.log(error)
+          toast({
+            title: 'Erro ao buscar produtos.',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+        });
         })
       }
     }
@@ -170,10 +172,7 @@ const Index = () => {
       const produtoEncontrado = dataArrays.find(produto => produto.slug === slug && produto.tipo == tipo);
 
       if (produtoEncontrado) {
-        console.log("oni", produtoEncontrado)
         const { slug, nome, desc, imgurl, value, tipo = null, tipos = null, ident } = produtoEncontrado;
-        console.log("aq3d:", slug, nome, desc, imgurl, value, tipo, tipos, ident)
-        console.log(tipos, tipo, tipos.some(item => item.id === tipo))
         if (tipos && tipos.some(item => item.id === tipo)) {
           arrayResultado.push({ slug, nome, desc, imgurl, value, quantity, tipo, tipos, ident });
           setdataar3(arrayResultado);
@@ -263,11 +262,9 @@ const Index = () => {
               </div>
 
               <Divider borderBottomColor={"blackAlpha.400"}></Divider>
-              {console.log("aq2", dataArrays3)}
               {dataArrays3.length > 0 ? (
 
                 dataArrays3.map((item) => {
-                  { console.log(item) }
                   return (
                     <div key={item.ident} className='flex w-full p-1'>
                       <button onClick={() => { Router.push("/product/" + item.slug) }} className='flex w-full p-1'>

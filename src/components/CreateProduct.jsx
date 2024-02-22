@@ -74,7 +74,6 @@ const CreateProduct = () => {
     const handleNomeTipoChange = (index, value) => {
         const novosNomesTipos = [...nomesTipos];
         novosNomesTipos[index] = value;
-        console.log(novosNomesTipos)
         setNomesTipos(novosNomesTipos);
     };
 
@@ -109,8 +108,6 @@ const CreateProduct = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-
-            console.log('Resposta do servidor:', response.data);
             setLoading(false);
             onClose(); // Fechar modal após o envio bem-sucedido
         } catch (error) {

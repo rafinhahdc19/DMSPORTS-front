@@ -48,8 +48,6 @@ const Index = () => {
 
         const existingCarsWithSameSlug = existingCars.filter((car) => car.slug === slug);
 
-        console.log(existingCarsWithSameSlug);
-
         // Verificar se pelo menos um dos carros com o mesmo slug tem o mesmo tipo
         const existsCarWithSameType = existingCarsWithSameSlug.some((car) => car.tipo === tipo);
 
@@ -99,7 +97,6 @@ const Index = () => {
         const item = axios.post(process.env.NEXT_PUBLIC_BACKEND + "/product/get", {
             slug: slugs
         }).then(function (response) {
-            console.log([response.data])
             setdataar([response.data])
         }).catch(function (response) {
             setdataar([])
@@ -158,7 +155,7 @@ const Index = () => {
                                         <ul className='flex mr-auto ml-auto gap-4 w-full flex-wrap'>
                                             {itemToShow.tipos.map((Tipo) => (
                                                 <li key={Tipo.id}>
-                                                    <button onClick={() => { setTipo(Tipo.id), console.log(tipo) }}>
+                                                    <button onClick={() => { setTipo(Tipo.id) }}>
 
                                                         <div key={Tipo.id} className={`border px-4 py-2 duration-200 ease-in-out flex rounded-lg ${tipo == Tipo.id ? "border-green-500" : "border-black/50"}`} style={{ aspectRatio: '2/1', alignItems: 'center', justifyContent: 'center' }}>
                                                             <div>{Tipo.nome}</div>

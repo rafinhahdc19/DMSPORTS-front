@@ -79,7 +79,6 @@ const Index = () => {
             query: { cupom: response.data.purchase.cupom }
         })
         }
-        console.log(itenCar)
         setdataar2(itenCar);
 
         if (itenCar.length > 0) {

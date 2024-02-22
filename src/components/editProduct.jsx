@@ -88,7 +88,6 @@ const EditProduct = ({ slug, oldTitle, oldDesc, oldValue, att, setAtt, oldFixado
             setDesc(oldDesc || "")
             setValue(oldValue || "")
             setFixado(oldFixado || false)
-            console.log(error)
             if(error?.response?.data?.error == "Limite de produtos fixados atingido"){
                 toast({
                     title: 'Limite de produtos fixados atingido',
