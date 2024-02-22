@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+::selection {
+  background-color: #38d93dd7; /* Substitua pela cor desejada */
+  color: #ffffff; /* Cor do texto selecionado */
+}
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: #F2F7F3;
+  --swiper-navigation-size: 15px;
+  --swiper-navigation-sides-offset: 21px;
+  --swiper-navigation-color: white
+}
+
+@keyframes mudancaCorFundo {
+  0% {
+    background-color: rgba(255, 255, 255, 0.858); /* Branco */
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.858); /* Preto */
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: rgba(77, 77, 77, 0.858);
+  border-radius: 45px;
+  padding: 25px;
+  color: #F2F7F3;
+  transition: background-color 0.3s ease;
+  backdrop-filter: blur(5px);
+  font-weight: 800;
+}
+
+/* Estilo do botão de navegação ao passar o mouse */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: rgba(0, 0, 0, 0.858);
+}
+
