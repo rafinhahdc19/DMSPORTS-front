@@ -28,12 +28,6 @@ const Index = () => {
                 setCupons(response.data); // Armazena a resposta na variável cupons
             } catch (error) {
                 console.error('Erro ao obter os cupons:', error);
-                toast({
-                    title: 'Erro na comunicação com o servidor.',
-                    status: 'error',
-                    duration: 9000,
-                    isClosable: true,
-                });
             }
         };
 
