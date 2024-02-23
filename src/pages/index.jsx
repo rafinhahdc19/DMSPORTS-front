@@ -45,7 +45,6 @@ export default function Index() {
 
   const fetchData = async (page, search) => {
     try {
-      setloading(true)
       if (search) {
         
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
@@ -69,7 +68,6 @@ export default function Index() {
   };
   const fetchData2 = async (page, search) => {
     try {
-      setloading(true)
       if (search) {
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
           page: page,
@@ -92,6 +90,7 @@ export default function Index() {
   };
 
   const loadMoreItems = () => {
+    setloading(true)
     setPag(pag + 1);
     setChangePag(changePag + 1)
   };
@@ -293,7 +292,7 @@ export default function Index() {
             </ul>
             <div className="text-center my-4">
               {!fim ? (
-                <Button colorScheme='whatsapp' variant='outline' onClick={loadMoreItems}>
+                <Button colorScheme='whatsapp' variant='outline' onClick={() => !loading && loadMoreItems()}>
                   {!loading ? (
                     "Carregar Mais"
                   ) : (
