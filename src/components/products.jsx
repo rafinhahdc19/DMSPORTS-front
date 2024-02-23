@@ -23,6 +23,7 @@ const Product = ({ title, desc, image, value, link, slug }) => {
               alt='Foto do Produto'
               borderRadius='lg'
               className='rounded-[4px]'
+              unoptimized
             />
             <div style={{ userSelect: 'none' }} className='relative md:py-1 py-3 h-full'>
               <div className='mb-auto'>
