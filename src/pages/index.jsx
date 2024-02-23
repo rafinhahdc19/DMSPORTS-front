@@ -17,6 +17,7 @@ import Banner from '../components/banner'
 
 export default function Index() {
   const [vendas, setVendas] = useState([])
+  const [loading, setloading] = useState(false)
   const [slidesPerView, setSlidesPerView] = useState(4);
   const router = useRouter();
   const { search } = router.query;
@@ -44,16 +45,20 @@ export default function Index() {
 
   const fetchData = async (page, search) => {
     try {
+      setloading(true)
       if (search) {
+        
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
           page: pag,
           Search: search
         });
+        setloading(false)
         return response.data;
       } else {
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
           page: pag,
         });
+        setloading(false)
         return response.data;
       }
 
@@ -64,16 +69,19 @@ export default function Index() {
   };
   const fetchData2 = async (page, search) => {
     try {
+      setloading(true)
       if (search) {
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
           page: page,
           Search: search
         });
+        setloading(false)
         return response.data;
       } else {
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
           page: page,
         });
+        setloading(false)
         return response.data;
       }
 
@@ -90,7 +98,7 @@ export default function Index() {
 
   useEffect(() => {
 
-
+    
     if (!fim) {
       const offset = pag * itemsPerPage;
       const limit = itemsPerPage;
@@ -132,7 +140,6 @@ export default function Index() {
           }
         });
     }
-
   }, [changePag]);
   useEffect(() => {
     setPag(1)
@@ -174,7 +181,7 @@ export default function Index() {
           setfim(true);
         }
       });
-
+    
   }, [search])
 
   useEffect(() => {
@@ -286,7 +293,14 @@ export default function Index() {
             </ul>
             <div className="text-center my-4">
               {!fim ? (
-                <Button colorScheme='whatsapp' variant='outline' onClick={loadMoreItems}>Carregar Mais</Button>
+                <Button colorScheme='whatsapp' variant='outline' onClick={loadMoreItems}>
+                  {!loading ? (
+                    "Carregar Mais"
+                  ) : (
+                    <div className='px-4 flex items-center justify-center'>
+                      <Spinner className='ml-auto mr-auto mt-auto mb-auto' color='blue.600' size='sm' />
+                    </div>
+                  )}</Button>
               ) : (
                 <Button onClick={() => { router.push("/") }} className='focus:bg-green-500 mr-auto ml-auto' _focus={"bg-green-500"} variant="solid" colorScheme="blue" >
                   <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para a tela inicial

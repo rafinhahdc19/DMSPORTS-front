@@ -20,6 +20,7 @@
   color: #ffffff; /* Cor do texto selecionado */
 }
 body {
+  scroll-behavior: smooth;
   color: rgb(var(--foreground-rgb));
   background-color: #F2F7F3;
   --swiper-navigation-size: 15px;

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { Input, Button, Alert, AlertIcon, AlertTitle } from '@chakra-ui/react';
-import Link from 'next/link';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useRouter } from 'next/router';
