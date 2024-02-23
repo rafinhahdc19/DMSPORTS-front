@@ -357,8 +357,8 @@ const Index = () => {
                 </Text>
               </div>
               {resultadoFinalSemDesconto !== resultadoFinal && applyCupom !== "" && (
-                <div className=' justify-between flex text-black md:px-4 md:mt-1 md:pb-3 p-1 px-4 '>
-                  <p className=' font-light '>
+                <div className=' justify-between flex text-black md:px-4 md:mt-1 mt-2 md:pb-3 px-4 '>
+                  <p className=' font-light md:text-base text-sm'>
                     Desconto(s)
                   </p>
                   <Text style={{ textDecoration: 'line-through' }} className='font-light' textDecoration="none" color='blue.600' fontSize='lg'>
@@ -367,8 +367,8 @@ const Index = () => {
                 </div>
               )}
 
-              <div className=' justify-between flex text-black md:mt-0 mt-1 md:px-4 px-4 '>
-                <p className=' font-medium md:text-xl text-lg'>
+              <div className={`justify-between flex text-black md:mt-0  md:px-4 px-4 ${resultadoFinalSemDesconto !== resultadoFinal && applyCupom !== "" ? (""):("mt-1")}`}>
+                <p className=' font-medium md:text-xl text-base'>
                   Total
                 </p>
                 <Text textDecoration="none" color='blue.600' fontSize='xl'>

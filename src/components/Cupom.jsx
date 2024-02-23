@@ -73,7 +73,7 @@ const Cupom = ({ SetApplyCupom, setDescontoValue, disabled, dataArrays3 }) => {
 
     return (
         <>
-            <h2 className='font-medium text-sm py-1'>
+            <h2 className='font-medium md:text-base text-sm py-1'>
                 {!acceptCupom(dataArrays3) ? ("O Cupom requer no mínimo 3 produtos.") :
                     <Link onClick={() => setIsModalOpen(true)} color="blue.500">Adicionar Cupom</Link>}
             </h2>
