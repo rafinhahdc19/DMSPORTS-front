@@ -86,7 +86,7 @@ const Index = () => {
       setdataar3(remainingItems);
       setdataar2(existingCars)
     }
-    if (dataArrays3.length < 0) {
+    if (dataArrays3.length > 0) {
 
     } else {
       setLoading(<div className='p-6'>
@@ -219,6 +219,12 @@ const Index = () => {
       setloading(false)
     } catch (err) {
       setloading(false)
+      toast({
+        title: 'Erro na comunicação com o servidor.',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+    });
     }
   }
 

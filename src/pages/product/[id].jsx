@@ -28,9 +28,10 @@ import DeleteProduct from '@/components/DeleteProduct'
 const Index = () => {
     const toast = useToast()
     const [tipo, setTipo] = useState("")
+    const [loading, setloading] = useState(false)
     const router = useRouter();
     const { id } = router.query;
-    
+
     const [att, setAtt] = useState(1)
 
     const updateLocalStorage = (slug, tipos) => {
@@ -100,6 +101,12 @@ const Index = () => {
             setdataar([response.data])
         }).catch(function (response) {
             setdataar([])
+            toast({
+                title: 'Erro na comunicação com o servidor.',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            });
         })
     }, [id, att])
     const itemToShow = dataArrays.find(item => item?.slug === id);
@@ -108,9 +115,30 @@ const Index = () => {
         quantity: 1,
     }];
     const listTo64 = btoa(encodeURIComponent(JSON.stringify(itemToBuy)))
-    const buyHere = (slug) => {
-        updateLocalStorage(slug)
-        router.push("/carrinho")
+    const getTokenForPay = async () => {
+        setloading(true)
+        try {
+            const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/tokenforpay", {
+                purchase: {
+                    cupom: "",
+                    produtos: [{ slug: id, quantity: 1 }]
+                }
+            })
+            const mensagem = "Olá! Gostaria de finalizar a compra desses produtos: " + process.env.NEXT_PUBLIC_FRONTEND + "/listadeprodutos/" + response.data.slug;
+            const numero = process.env.NEXT_PUBLIC_TELNUMBER;
+            const link = `https://wa.me/${numero}/?text=${encodeURIComponent(mensagem)}`;
+            router.push(link);
+            setloading(false)
+        } catch (err) {
+            setloading(false)
+            console.log(err)
+            toast({
+                title: 'Erro na comunicação com o servidor.',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            });
+        }
     }
     const OriginalValue = (value) => {
         return (parseInt(value, 10) * 1.5).toString()
@@ -183,13 +211,13 @@ const Index = () => {
                                         <ul className='grid mr-auto ml-auto w-full gap-4 grid-cols-1'>
                                             <li>
 
-                                                <button onClick={() => updateLocalStorage(itemToShow.slug, itemToShow.tipos)} className='w-full focus:bg-blue-500 bg-green-500 hover:bg-green-600 duration-200 ease-in-out font-medium mr-auto ml-auto text-white rounded-md p-2'>
+                                                <button disabled={loading} onClick={() => updateLocalStorage(itemToShow.slug, itemToShow.tipos)} className='w-full focus:bg-blue-500 bg-green-500 hover:bg-green-600 duration-200 ease-in-out font-medium mr-auto ml-auto text-white rounded-md p-2'>
                                                     Adicionar ao carrinho
                                                 </button>
                                             </li>
                                             <li>
 
-                                                <button onClick={() => buyHere(itemToShow.slug)} className='w-full bg-green-100 hover:bg-green-50 text-green-700 duration-200 font-medium mr-auto ml-auto ease-in-out rounded-md p-2'>
+                                                <button disabled={loading} onClick={() => getTokenForPay()} className='w-full bg-green-100 hover:bg-green-50 text-green-700 duration-200 font-medium mr-auto ml-auto ease-in-out rounded-md p-2'>
                                                     Comprar agora
                                                 </button>
 

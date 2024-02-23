@@ -6,9 +6,13 @@ import Cookies from 'js-cookie';
 import CreateCupom from "@/components/CreateCupom";
 import CreateProduct from "@/components/CreateProduct";
 import AuthVerify from "@/components/Verifyer";
+import { useRouter } from "next/router";
+import { useToast } from "@chakra-ui/react";
 
 const Index = () => {
     //consertar que se eu adicionar tipo e preencher e depois apagar o tipo ele continua com o valor em create products
+    const router = useRouter()
+    const toast = useToast()
     const [attCupom, setAttCupom] = useState(0)
     const [cupons, setCupons] = useState([]);
     const token = Cookies.get('token');
@@ -24,7 +28,12 @@ const Index = () => {
                 setCupons(response.data); // Armazena a resposta na variável cupons
             } catch (error) {
                 console.error('Erro ao obter os cupons:', error);
-                // Trate o erro conforme necessário
+                toast({
+                    title: 'Erro na comunicação com o servidor.',
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                });
             }
         };
 

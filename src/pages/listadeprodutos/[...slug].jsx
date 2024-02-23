@@ -15,6 +15,7 @@ import {
   Input,
   HStack,
   Box,
+  useToast
 } from '@chakra-ui/react'
 import { Spinner } from '@chakra-ui/react'
 
@@ -24,10 +25,12 @@ import axios from 'axios'
 import Cupomforpay from '@/components/cupomforpay'
 
 const Index = () => {
+  const toast = useToast()
   const router = useRouter()
   const [applyCupom, SetApplyCupom] = useState("")
   const { slug } = router.query
   const { cupom } = router.query
+  const [error, setError] = useState(false);
   const [desconto, setDescontoValue] = useState(0)
   const [resultadoFinal, setresultadoFinal] = useState("000")
   const [resultadoFinalSemDesconto, setresultadoFinalSemDesconto] = useState("000")
@@ -49,6 +52,7 @@ const Index = () => {
     return total;
   };
   const [Loading, setLoading] = useState(<div className='w-full justify-center flex p-4'><Stack className='mr-auto ml-auto' direction='row' spacing={4}> <Spinner size='xl' color='red.500' /> </Stack></div>)
+  const [loading, setloading] = useState(true)
   const [dataArrays, setdataar] = useState([])
   const [dataArrays2, setdataar2] = useState([])
   const [dataArrays3, setdataar3] = useState([])
@@ -68,16 +72,19 @@ const Index = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setloading(true)
       try {
+        if(!slug[0] && slug[0] !== "") return
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/withtoken", {
           slug: slug[0]
         });
+        
         const itenCar = response.data.purchase.produtos;
         if (response.data.purchase.cupom && response.data.purchase.cupom !== "" && (!cupom || cupom === "")) {
           router.push({
-            pathname: '/listadeprodutos/'+slug[0],
+            pathname: '/listadeprodutos/' + slug[0],
             query: { cupom: response.data.purchase.cupom }
-        })
+          })
         }
         setdataar2(itenCar);
 
@@ -87,8 +94,10 @@ const Index = () => {
           });
           setdataar(response.data.itens);
         }
+        setloading(false)
       } catch (error) {
-        console.error("Erro ao buscar dados:", error);
+        setError(true)
+        setloading(false)
       }
     };
 
@@ -120,11 +129,15 @@ const Index = () => {
 
 
   useEffect(() => {
-    const loadingContent = dataArrays2.length > 0 ? null : (
+    const loadingContent = !loading && error ? (
       <div className='p-6'>
         <h1 className='text-xl font-medium text-center text-black'>
-          Não existe nenhum item no carrinho!
+          Não existe nenhum item na lista!
         </h1>
+      </div>
+    ) : (
+      <div className='flex justify-center py-[2rem]'>
+        <Spinner className='ml-auto mr-auto' color='blue.600' size='xl' />
       </div>
     );
     setLoading(loadingContent);
