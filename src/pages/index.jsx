@@ -249,7 +249,7 @@ export default function Index() {
                     onSlideChange={() => console.log('slide change')}
                   >
                     {itemsV.map((item) => (
-                      <SwiperSlide key={index}>
+                      <SwiperSlide key={item.id}>
                         <Product
                           key={item.id}
                           className="ml-auto mr-auto"
