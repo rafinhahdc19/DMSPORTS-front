@@ -33,7 +33,7 @@ const Index = () => {
 
     return (
         <>
-            <AuthVerify>
+            <AuthVerify routerFunction={() => router.push("/painel/login")}>
             <Navbar />
             <main className="mt-[8rem]">
                 <h1 className="lg:max-w-7xl px-2 pb-4 font-semibold text-2xl mr-auto ml-auto">
