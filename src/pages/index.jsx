@@ -113,7 +113,7 @@ export default function Index() {
                 setItemsV([])
               } else {
                 if (!data?.vendido) {
-                  
+
                 } else {
                   setItemsV([...newItemsV])
                 }
@@ -155,7 +155,7 @@ export default function Index() {
               setItemsV([])
             } else {
               if (!data?.vendido) {
-                
+
               } else {
                 setItemsV([...newItemsV])
               }
@@ -216,7 +216,7 @@ export default function Index() {
         <Navbar search={search} att={() => fetchData(pag, search)} />
       </header>
       <main className='md:mt-[7rem] mt-[7rem] ml-auto mr-auto '>
-        <Banner></Banner>
+
         {notfound ? (
           <>
             <div className='w-full mr-auto ml-auto relative justify-center'>
@@ -232,7 +232,8 @@ export default function Index() {
           <div className='flex justify-center pt-[2rem]'>
             <Spinner className='ml-auto mr-auto' color='blue.600' size='xl' />
           </div>
-        ) : (
+        ) : (<>
+          <Banner dataarray3={items}></Banner>
           <div>
             {itemsV.length > 0 && (
               <div className=' bg-[#eeeeee] pt-5 pb-1 mb-4'>
@@ -294,6 +295,7 @@ export default function Index() {
 
             </div>
           </div>
+        </>
         )}
 
       </main >

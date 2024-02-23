@@ -348,7 +348,7 @@ const Index = () => {
               <div className='md:block hidden'>
                 <h2 className='p-4 text-black font-medium'>Resumo da compra</h2>
                 <Divider borderBottomColor={"blackAlpha.400"}></Divider></div>
-              <div className=' justify-between flex text-black md:px-4 md:mt-4 mt-2 pb-2 p-1 px-4 '>
+              <div className='hidden md:flex justify-between text-black md:px-4 md:mt-4 mt-2 pb-2 p-1 px-4 '>
                 <p className=' font-light '>
                   Produto(s)
                 </p>
@@ -367,7 +367,7 @@ const Index = () => {
                 </div>
               )}
 
-              <div className=' justify-between flex text-black md:px-4 px-4 '>
+              <div className=' justify-between flex text-black md:mt-0 mt-1 md:px-4 px-4 '>
                 <p className=' font-medium md:text-xl text-lg'>
                   Total
                 </p>
@@ -390,12 +390,12 @@ const Index = () => {
                   </svg><span> Entrega para todo brasil</span>
                 </p>
               </div>
-              <div className='px-4 md:p-4 pb-2 pt-1'>
+              <div className='px-4 md:p-4 pb-1 pt-1'>
                 <Cupom dataArrays3={dataArrays3} disabled={applyCupom != ""} SetApplyCupom={SetApplyCupom} setDescontoValue={setDescontoValue}></Cupom>
               </div>
-              <div className='mx-4 mb-3 md:my-0 pb-4 my-2'>
-                <Button onClick={() => getTokenForPay()} className="md:p-0 p-4 w-full" variant="solid" colorScheme="whatsapp" isDisabled={dataArrays3.length === 0 || loading}>
-                  <span className={`flex break-words lg:text-base md:text-sm text-base`}>
+              <div className='mx-4 md:mb-3 md:my-0 pb-4 my-2'>
+                <Button onClick={() => getTokenForPay()} className="md:p-0 p-1 w-full" variant="solid" colorScheme="whatsapp" isDisabled={dataArrays3.length === 0 || loading}>
+                  <span className={`flex break-words lg:text-base md:text-sm text-sm`}>
                     Finalizar compra pelo Whatsapp
                   </span>
                 </Button>

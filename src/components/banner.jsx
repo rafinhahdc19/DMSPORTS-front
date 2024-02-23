@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import Image from 'next/image'
 
-export default function Banner(){
+export default function Banner({dataarray3}){
     const [baner, setbaner] = useState("/DM SPORTS BANNER.png")
     useEffect(() => {
         function handleResize() {
@@ -17,7 +17,7 @@ export default function Banner(){
         return () => {
           window.removeEventListener('resize', handleResize);
         };
-      }, []);
+      }, [dataarray3]);
 
 
     return(

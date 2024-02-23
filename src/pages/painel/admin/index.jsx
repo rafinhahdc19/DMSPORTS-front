@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import CreateCupom from "@/components/CreateCupom";
 import CreateProduct from "@/components/CreateProduct";
+import AuthVerify from "@/components/Verifyer";
 
 const Index = () => {
     //consertar que se eu adicionar tipo e preencher e depois apagar o tipo ele continua com o valor em create products
@@ -32,6 +33,7 @@ const Index = () => {
 
     return (
         <>
+            <AuthVerify>
             <Navbar />
             <main className="mt-[8rem]">
                 <h1 className="lg:max-w-7xl px-2 pb-4 font-semibold text-2xl mr-auto ml-auto">
@@ -56,6 +58,7 @@ const Index = () => {
                     <CreateCupom attCupom={attCupom} setAttCupom={setAttCupom}></CreateCupom>
                 </div>
             </main>
+            </AuthVerify>
         </>
     );
 };
