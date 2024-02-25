@@ -229,7 +229,7 @@ export default function Index() {
               <p className="text-center text-black font-medium text-2xl p-4">Nenhum produto encontrado</p>
               <div className='mr-auto ml-auto justify-center flex'>
                 <Button onClick={() => { router.push("/") }} className='focus:bg-green-500 mr-auto ml-auto' _focus={"bg-green-500"} variant="solid" colorScheme="blue" >
-                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para o in&iacute;cio
+                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para o inicio
                 </Button>
               </div>
             </div>
@@ -282,7 +282,7 @@ export default function Index() {
               </div>
             ) : (
               <div className='pt-5' >
-                <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>{`rodutos com ${search}`} 🔥</h1>
+                <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>{`Produtos com ${search}`} 🔥</h1>
               </div>
             )}
             <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
@@ -311,7 +311,7 @@ export default function Index() {
                   )}</Button>
               ) : (
                 <Button onClick={() => { router.push("/") }} className='focus:bg-green-500 mr-auto ml-auto' _focus={"bg-green-500"} variant="solid" colorScheme="blue" >
-                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para o in&iacute;cio
+                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para a tela inicial
                 </Button>
               )}
 
