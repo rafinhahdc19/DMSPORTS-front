@@ -13,7 +13,7 @@ const Product = ({ title, desc, image, value, link, slug }) => {
   return (
     <>
       <Card className='mr-auto ml-auto overflow-hidden' maxW='sm'>
-        <CardBody >
+        <div className='sm:p-4 p-2'>
           <Link href={link} >
             <Image
               style={{ userSelect: 'none' }}
@@ -27,16 +27,16 @@ const Product = ({ title, desc, image, value, link, slug }) => {
             <div style={{ userSelect: 'none' }} className='relative md:py-1 py-3 h-full'>
               <div className='mb-auto'>
                 <Box style={{ wordBreak: 'break-word' }}>
-                  <Text className='mt-1' fontSize='xl' textDecor="none" noOfLines={1}>
+                  <Text className='mt-1 md:text-xl text-sm' textDecor="none" noOfLines={1}>
                     {title}
                   </Text>
                 </Box>
                 <Box style={{ wordBreak: 'break-word' }}>
-                  <Text fontSize="base" my="2" noOfLines={1} >
+                  <Text className='md:text-xl text-xs' my="2" noOfLines={1} >
                     {desc}
                   </Text>
                 </Box>
-                <div className='flex gap-1'>
+                <div className='md:flex gap-1'>
                   <Text className=' text-[#0076ff] mt-auto font-medium ' textDecoration="none" fontSize='xl'>
                     {FormatCurrency(value)}
                   </Text>
@@ -48,7 +48,7 @@ const Product = ({ title, desc, image, value, link, slug }) => {
               </div>
             </div>
           </Link>
-        </CardBody>
+        </div>
       </Card>
 
     </>

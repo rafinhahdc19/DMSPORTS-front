@@ -30,23 +30,21 @@ export default function Index() {
 
   const itemsPerPage = 24
 
-  useEffect(() => {
-    // Verifica se o parâmetro 'search' está presente na query
+  /*useEffect(() => {
     const hasSearchParam = router.query.hasOwnProperty('search');
-
-    // Se 'search' não estiver presente, redireciona para a mesma URL com 'search' como uma string vazia
-    if (!hasSearchParam) {
-      router.push({
+    
+    if (!hasSearchParam || !router.query.search) {
+      router.replace({
         pathname: router.pathname,
         query: { search: '' },
       });
     }
-  }, [router]);
+  }, [search]);*/
 
   const fetchData = async (page, search) => {
     try {
       if (search) {
-        
+
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
           page: pag,
           Search: search
@@ -97,7 +95,7 @@ export default function Index() {
 
   useEffect(() => {
 
-    
+
     if (!fim) {
       const offset = pag * itemsPerPage;
       const limit = itemsPerPage;
@@ -119,6 +117,7 @@ export default function Index() {
               if (search) {
                 setItemsV([])
               } else {
+                setItemsV([])
                 if (!data?.vendido) {
 
                 } else {
@@ -160,6 +159,7 @@ export default function Index() {
             if (search) {
               setItemsV([])
             } else {
+              setItemsV([])
               if (!data?.vendido) {
 
               } else {
@@ -180,7 +180,7 @@ export default function Index() {
           setfim(true);
         }
       });
-    
+
   }, [search])
 
   useEffect(() => {
@@ -239,7 +239,10 @@ export default function Index() {
             <Spinner className='ml-auto mr-auto' color='blue.600' size='xl' />
           </div>
         ) : (<>
-          <Banner dataarray3={items}></Banner>
+          {!search && (
+            <Banner dataarray3={items}>
+            </Banner>
+          )}
           <div>
             {itemsV.length > 0 && (
               <div className=' bg-[#eeeeee] pt-5 pb-1 mb-4'>
@@ -273,10 +276,16 @@ export default function Index() {
                 </div>
               </div>
             )}
-            <div className='pt-5' >
-              <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold text-2xl mr-auto ml-auto'>Melhores produtos 🔥</h1>
-            </div>
-            <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 justify-center gap-5 lg:max-w-7xl mr-auto ml-auto'>
+            {!search ? (
+              <div className='pt-5' >
+                <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>Melhores produtos 🔥</h1>
+              </div>
+            ) : (
+              <div className='pt-5' >
+                <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>Produtos com "{search}" 🔥</h1>
+              </div>
+            )}
+            <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
               {items.map((item) => (
                 <Product
                   key={item.id}
