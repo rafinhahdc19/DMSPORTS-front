@@ -229,7 +229,7 @@ export default function Index() {
               <p className="text-center text-black font-medium text-2xl p-4">Nenhum produto encontrado</p>
               <div className='mr-auto ml-auto justify-center flex'>
                 <Button onClick={() => { router.push("/") }} className='focus:bg-green-500 mr-auto ml-auto' _focus={"bg-green-500"} variant="solid" colorScheme="blue" >
-                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> {"Voltar para o inicio"}
+                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para o in&iacute;cio
                 </Button>
               </div>
             </div>
@@ -311,7 +311,7 @@ export default function Index() {
                   )}</Button>
               ) : (
                 <Button onClick={() => { router.push("/") }} className='focus:bg-green-500 mr-auto ml-auto' _focus={"bg-green-500"} variant="solid" colorScheme="blue" >
-                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> {"Voltar para a tela de inicio"}
+                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para o in&iacute;cio
                 </Button>
               )}
 
