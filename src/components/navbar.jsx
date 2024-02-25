@@ -35,7 +35,7 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
   return (
     <div>
       <nav className="w-full bg-[#FFF] drop-shadow-lg fixed top-0 left-0 right-0 z-50">
-        <div className="justify-between py-3 md:py-0 px-1  mx-auto w-full lg:max-w-7xl md:items-center md:flex md:px-1">
+        <div className="justify-between md:py-0 px-1  mx-auto w-full lg:max-w-7xl md:items-center md:flex md:px-1">
           <div className='w-full'>
 
             <div className="flex items-center justify-between py-3 md:pb-1 md:pt-3 md:block">
@@ -93,7 +93,7 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
           </div>
 
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'p-9 md:p-0 block' : 'hidden'
+            className={`flex-1 justify-self-center pb-3 mt-8 md:hidden md:pb-0 md:mt-0 ${navbar ? 'p-9 md:p-0 block' : 'hidden'
               }`}
           >
             <ul className="h-screen md:h-auto items-center justify-center md:flex ">
