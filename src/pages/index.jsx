@@ -282,7 +282,7 @@ export default function Index() {
               </div>
             ) : (
               <div className='pt-5' >
-                <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>Produtos com "{search}" 🔥</h1>
+                <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>{`rodutos com ${search}`} 🔥</h1>
               </div>
             )}
             <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
