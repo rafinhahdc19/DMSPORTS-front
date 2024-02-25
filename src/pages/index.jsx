@@ -222,7 +222,7 @@ export default function Index() {
       <header>
         <Navbar search={search} att={() => fetchData(pag, search)} />
       </header>
-      <main className='md:mt-[7.5rem] mt-[7rem] ml-auto mr-auto '>
+      <main className='md:mt-[8rem] mt-[7rem] ml-auto mr-auto '>
 
         {notfound ? (
           <>
@@ -230,7 +230,7 @@ export default function Index() {
               <p className="text-center text-black font-medium text-2xl p-4">Nenhum produto encontrado</p>
               <div className='mr-auto ml-auto justify-center flex'>
                 <Button onClick={() => { router.push("/") }} className='focus:bg-green-500 mr-auto ml-auto' _focus={"bg-green-500"} variant="solid" colorScheme="blue" >
-                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para o inicio
+                  <ArrowBackIcon className='mr-1'></ArrowBackIcon> Voltar para o início
                 </Button>
               </div>
             </div>
