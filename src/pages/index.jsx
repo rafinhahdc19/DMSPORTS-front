@@ -27,6 +27,7 @@ export default function Index() {
   const [changePag, setChangePag] = useState(1);
   const [fim, setfim] = useState(false)
   const [notfound, setnotfound] = useState(false)
+  const [gatilho, setgatilho] = useState(0)
 
   const itemsPerPage = 24
 
@@ -181,7 +182,7 @@ export default function Index() {
         }
       });
 
-  }, [search])
+  }, [search, gatilho])
 
   useEffect(() => {
     // Função para calcular o número de slides por visualização com base na largura da janela

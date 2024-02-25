@@ -8,7 +8,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import  Router  from 'next/router'
 import { useRouter } from 'next/router'
 
-const Navbar = ({search, att}) => {
+const Navbar = ({search, att, gatilho, setgatilho}) => {
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const [usedCar, setUsedCar] = useState("block");
@@ -25,7 +25,10 @@ const Navbar = ({search, att}) => {
 
     const routerFunc = (e) => {
       e.preventDefault();
-      router.push('/?search='+Search) 
+      if(gatilho){
+        setgatilho(gatilho+1)
+      }
+      router.push('/?search='+encodeURIComponent(Search)) 
     }
     return (
       <div>
@@ -59,6 +62,30 @@ const Navbar = ({search, att}) => {
                         
                     </div></form>
                 </div>
+                </div>
+                <div className="md:hidden">
+                <button
+                    onClick={() => setNavbar(!navbar)}
+                    type='button'
+                    className='inline-flex items-center justify-center p-2 rounded-md text-black hover:bg-gray-100  ease-in-out duration-300 focus:outline-none  '
+                    aria-label='Menu'
+                    aria-expanded='false'
+                    >
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        strokeWidth={1.5}
+                        stroke='currentColor'
+                        className='w-7 h-7'
+                    >
+                        <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
+                        />
+                    </svg>
+                </button>
                 </div>
               </div>
             </div>

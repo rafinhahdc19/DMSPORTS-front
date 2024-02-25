@@ -101,12 +101,6 @@ const Index = () => {
             setdataar([response.data])
         }).catch(function (response) {
             setdataar([])
-            toast({
-                title: 'Erro na comunicação com o servidor.',
-                status: 'error',
-                duration: 9000,
-                isClosable: true,
-            });
         })
     }, [id, att])
     const itemToShow = dataArrays.find(item => item?.slug === id);
