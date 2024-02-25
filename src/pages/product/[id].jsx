@@ -143,7 +143,7 @@ const Index = () => {
 
             <header className='fixed w-full z-10 top-0'><Navbar></Navbar></header>
             {itemToShow && (
-                <main className='md:mt-[8rem] lg:max-w-6xl drop-shadow-sm rounded mt-[7rem] ml-auto mr-auto'>
+                <main className='md:mt-[9rem] lg:max-w-6xl drop-shadow-sm rounded mt-[7rem] ml-auto mr-auto'>
                     <div className='bg-white rounded w-full p-4 md:pt-5 md:px-14 px-2 text-black'>
 
                         <div className='md:flex'>

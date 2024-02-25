@@ -252,7 +252,7 @@ const Index = () => {
   return (
     <>
       <header className='fixed w-full z-10 top-0'><Navbar></Navbar></header>
-      <main className='md:mt-[8rem] w-full justify-center mt-[7rem]'>
+      <main className='md:mt-[9rem] w-full justify-center mt-[7rem]'>
         <div className=' flex gap-2 rounded-md justify-between mr-auto ml-auto md:max-w-7xl'>
           <div className='md:w-[67%] lg:w-[70%] w-full'>
             <div className='w-[100%] md:mb-0 mb-[14rem] bg-white drop-shadow-md rounded-md'>

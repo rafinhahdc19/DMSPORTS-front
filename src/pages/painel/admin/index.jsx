@@ -38,7 +38,7 @@ const Index = () => {
         <>
             <AuthVerify routerFunction={() => router.push("/painel/login")}>
             <Navbar />
-            <main className="mt-[8rem]">
+            <main className="mt-[9rem]">
                 <h1 className="lg:max-w-7xl px-2 pb-4 font-semibold text-2xl mr-auto ml-auto">
                     Adicionar produto
                 </h1>

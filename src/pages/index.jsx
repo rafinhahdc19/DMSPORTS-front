@@ -222,7 +222,7 @@ export default function Index() {
       <header>
         <Navbar search={search} att={() => fetchData(pag, search)} />
       </header>
-      <main className='md:mt-[7rem] mt-[7rem] ml-auto mr-auto '>
+      <main className='md:mt-[7.5rem] mt-[7rem] ml-auto mr-auto '>
 
         {notfound ? (
           <>
