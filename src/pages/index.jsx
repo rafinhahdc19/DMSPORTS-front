@@ -14,6 +14,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Banner from '../components/banner'
+import Footer from '@/components/footer'
 
 export default function Index() {
   const [vendas, setVendas] = useState([])
@@ -322,6 +323,7 @@ export default function Index() {
         )}
 
       </main >
+      <Footer></Footer>
     </>
   )
 }
