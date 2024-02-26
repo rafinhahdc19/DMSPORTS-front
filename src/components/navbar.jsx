@@ -91,7 +91,7 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
               </div>
             </div>
           </div>
-          <div className='items-center mt-1 justify-center md:flex'>
+          <div className='items-center mt-1 justify-center hidden md:flex'>
             <div className="text-base mt-auto mb-auto mr-auto ml-auto text-black py-3 px-6 text-center  border-b-2 md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
               <Link className='flex' href="/carrinho" onClick={() => setNavbar(!navbar)}>
 
@@ -213,7 +213,7 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
               <li className="duration-200 ease-in-out cursor-pointer md:block hidden text-base text-black px-2 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
                 <Link className='flex' href={"/?search=" + encodeURIComponent("23-24")} onClick={() => setNavbar(!navbar)}>
 
-                  <span className='mt-auto mb-auto md:block hidden'>23-24</span>
+                  <span className='mt-auto mb-auto md:block hidden'>23_24</span>
 
 
                 </Link>

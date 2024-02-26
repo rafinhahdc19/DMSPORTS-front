@@ -1,24 +1,27 @@
-import Link from "next/link";
+import React from "react"
+import Link from "next/link"
 
-export default function Footer() {
-    const currentYear = new Date().getFullYear(); // Obter o ano atual dinamicamente
-
+const Footer = () => {
+    const anoAtual = new Date().getFullYear();
     return (
-        <div className="bg-white b-0 mt-[4rem]">
-            <div className="flex justify-between">
-                <div className='px-16 py-10'>
-                    <h5 className='font-medium text-xl'>Telefone</h5>
-                    <p className='font-medium text-lg'>+55 77 99196-4479</p>
+        <>
+            <div className="bg-white p-6 pb-[5rem] mt-[5rem] mb-0">
+                <div className="lg:max-w-7xl  mr-auto ml-auto">
+                    <div className="flex">
+                        <div className="md:mx-5 mr-2 w-[50%] md:w-auto">
+                            <h1 className=" md:text-2xl text-lg font-medium ">Telefone</h1>
+                            <h2 className=" md:text-xl text-[1rem] font-light">(77) 123456789</h2>
+                        </div>
+                        <div className="md:mx-5 ml-2 w-[50%] md:w-auto">
+                            <h1 className=" md:text-2xl text-lg font-medium ">Desenvolvido por:</h1>
+                            <p className='md:font-medium md:text-lg'><Link className=" text-blue-600 " href={"https://www.instagram.com/_rafadev_/"}>@_rafadev_</Link></p>
+                        </div>
+                    </div>
+                    <p className="bottom-0 absolute mb-3 md:mx-5">{anoAtual} © DMSPORTS</p>
                 </div>
-                <div className='px-16 py-10 -translate-x-52'>
-                    <h5 className='font-medium text-xl'>Desenvolvido por: </h5>
-                    <p className='font-medium text-lg'><Link className=" text-blue-600 " href={"https://www.instagram.com/_rafadev_/"}>@_rafadev_</Link></p>
-                </div>
-                <div></div>
             </div>
-            <div className='pb-4 text-center font-normal text-xl'>
-                <h5>{currentYear} © DMSPORTS</h5>
-            </div>
-        </div>
-    );
+        </>
+    )
 }
+
+export default Footer

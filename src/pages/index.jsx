@@ -227,7 +227,7 @@ export default function Index() {
 
         {notfound ? (
           <>
-            <div className='w-full mr-auto ml-auto relative justify-center'>
+            <div className='w-full mb-[15rem] mr-auto ml-auto relative justify-center'>
               <p className="text-center text-black font-medium text-2xl p-4">Nenhum produto encontrado</p>
               <div className='mr-auto ml-auto justify-center flex'>
                 <Button onClick={() => { router.push("/") }} className='focus:bg-green-500 mr-auto ml-auto' _focus={"bg-green-500"} variant="solid" colorScheme="blue" >
@@ -237,7 +237,7 @@ export default function Index() {
             </div>
           </>
         ) : items.length <= 0 ? (
-          <div className='flex justify-center pt-[2rem]'>
+          <div className='flex mb-[15rem] justify-center pt-[2rem]'>
             <Spinner className='ml-auto mr-auto' color='blue.600' size='xl' />
           </div>
         ) : (<>
