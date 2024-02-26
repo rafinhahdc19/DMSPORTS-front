@@ -229,7 +229,7 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
               <li className="duration-200 ease-in-out cursor-pointer md:block hidden text-base text-black px-2 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
                 <Link className='flex' href={"/?search=" + encodeURIComponent("Short")} onClick={() => setNavbar(!navbar)}>
 
-                  <span className='mt-auto mb-auto md:block hidden'>Short</span>
+                  <span className='mt-auto mb-auto md:block hidden'>Shorts</span>
 
 
                 </Link>
