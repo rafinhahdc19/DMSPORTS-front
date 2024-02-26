@@ -15,14 +15,13 @@ const Product = ({ title, desc, image, value, link, slug }) => {
       <Card className='mr-auto ml-auto overflow-hidden' maxW='sm'>
         <div className='sm:p-4 p-2'>
           <Link href={link} >
-            <Image
-              style={{ userSelect: 'none' }}
-              width={"480"}
-              height={"480"}
-              src={process.env.NEXT_PUBLIC_BACKEND + "/image?imageUrl=" + image}
-              alt='Foto do Produto'
-              borderRadius='lg'
-              className='rounded-[4px]'
+                <img
+              style={{ userSelect: 'none', borderRadius: '8px' }} // Estilo da imagem
+              width={480} // Largura da imagem
+              height={480} // Altura da imagem
+              src={process.env.NEXT_PUBLIC_BACKEND + "/image?imageUrl=" + image} // URL da imagem
+              alt='Foto do Produto' // Texto alternativo da imagem
+              className='rounded-[4px]' // Classes adicionais (se necessário)
             />
             <div style={{ userSelect: 'none' }} className='relative md:py-1 py-3 h-full'>
               <div className='mb-auto'>
@@ -40,7 +39,7 @@ const Product = ({ title, desc, image, value, link, slug }) => {
                   <Text className=' text-[#0076ff] mt-auto font-medium ' textDecoration="none" fontSize='xl'>
                     {FormatCurrency(value)}
                   </Text>
-                  
+
                   <Text className=' text-[#0052af] opacity-80 mt-auto mb-[2px] ' style={{ textDecoration: 'line-through' }} textDecoration="none" fontSize='sm'>
                     {FormatCurrency(discountValue)}
                   </Text>
