@@ -148,7 +148,7 @@ const Index = () => {
 
                         <div className='md:flex'>
                             <div className='md:w-[40%] md:mx-0 mx-2 rounded '>
-                                <Image
+                                <img
                                     width={"600"}
                                     height={"600"}
                                     src={process.env.NEXT_PUBLIC_BACKEND + "/image?imageUrl=" + itemToShow.imgurl}

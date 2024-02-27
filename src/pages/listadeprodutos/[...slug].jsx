@@ -191,11 +191,11 @@ const Index = () => {
                         <div className='flex p-4 w-full border rounded m-2 border-gray-200'>
 
                           <div className='rounded '>
-                            <Image
+                            <img
                               className='rounded'
                               width={"200"}
                               height={"200"}
-                              src={process.env.NEXT_PUBLIC_BACKEND + "/image?imageUrl=" + item.imgurl}
+                              src={(process.env.NEXT_PUBLIC_BACKEND + "/image?imageUrl=" + item.imgurl).replace("medium","small")}
                               alt='Foto do Produto'
                               borderRadius='lg' />
 
