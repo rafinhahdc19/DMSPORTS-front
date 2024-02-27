@@ -118,9 +118,9 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
                 </Link>
               </li>
               <li className="pb-3 md:hidden text-base text-black py-3 px-6 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
-                <Link className='flex' href={"/?search=" + encodeURIComponent("Flamengo")} onClick={() => setNavbar(!navbar)}>
+                <Link className='flex' href={"/?search=" + encodeURIComponent("jacket")} onClick={() => setNavbar(!navbar)}>
 
-                  <span className='mt-auto mb-auto text-sm block md:hidden'>Flamengo</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
+                  <span className='mt-auto mb-auto text-sm block md:hidden'>Jaquetas</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                   </svg>
 
@@ -128,9 +128,9 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
                 </Link>
               </li>
               <li className="pb-3 md:hidden text-base text-black py-3 px-6 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
-                <Link className='flex' href={"/?search=" + encodeURIComponent("Flamengo")} onClick={() => setNavbar(!navbar)}>
+                <Link className='flex' href={"/?search=" + encodeURIComponent("Sweatshirt")} onClick={() => setNavbar(!navbar)}>
 
-                  <span className='mt-auto mb-auto text-sm block md:hidden'>Flamengo</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
+                  <span className='mt-auto mb-auto text-sm block md:hidden'>Moletom</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                   </svg>
 
@@ -138,9 +138,9 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
                 </Link>
               </li>
               <li className="pb-3 md:hidden text-base text-black py-3 px-6 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
-                <Link className='flex' href={"/?search=" + encodeURIComponent("Palmeiras")} onClick={() => setNavbar(!navbar)}>
+                <Link className='flex' href={"/?search=" + encodeURIComponent("Polo")} onClick={() => setNavbar(!navbar)}>
 
-                  <span className='mt-auto mb-auto text-sm block md:hidden'>Palmeiras</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
+                  <span className='mt-auto mb-auto text-sm block md:hidden'>Polo</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                   </svg>
 
@@ -148,9 +148,9 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
                 </Link>
               </li>
               <li className="pb-3 md:hidden text-base text-black py-3 px-6 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
-                <Link className='flex' href={"/?search=" + encodeURIComponent("Corinthians")} onClick={() => setNavbar(!navbar)}>
+                <Link className='flex' href={"/?search=" + encodeURIComponent("23-24")} onClick={() => setNavbar(!navbar)}>
 
-                  <span className='mt-auto mb-auto text-sm block md:hidden'>Corinthians</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
+                  <span className='mt-auto mb-auto text-sm block md:hidden'>23_24</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                   </svg>
 
@@ -158,9 +158,19 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
                 </Link>
               </li>
               <li className="pb-3 md:hidden text-base text-black py-3 px-6 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
-                <Link className='flex' href={"/?search=" + encodeURIComponent("Cruzeiro")} onClick={() => setNavbar(!navbar)}>
+                <Link className='flex' href={"/?search=" + encodeURIComponent("Season")} onClick={() => setNavbar(!navbar)}>
 
-                  <span className='mt-auto mb-auto text-sm block md:hidden'>Cruzeiro</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
+                  <span className='mt-auto mb-auto text-sm block md:hidden'>Temporadas</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                  </svg>
+
+
+                </Link>
+              </li>
+              <li className="pb-3 md:hidden text-base text-black py-3 px-6 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
+                <Link className='flex' href={"/?search=" + encodeURIComponent("Short")} onClick={() => setNavbar(!navbar)}>
+
+                  <span className='mt-auto mb-auto text-sm block md:hidden'>Shorts</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                   </svg>
 
@@ -197,7 +207,7 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
               <li className=" duration-200 ease-in-out cursor-pointer md:block hidden text-base text-black  px-2 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
                 <Link className='flex' href={"/?search=" + encodeURIComponent("jacket")} onClick={() => setNavbar(!navbar)}>
 
-                  <span className='mt-auto mb-auto md:block hidden'>jaquetas</span>
+                  <span className='mt-auto mb-auto md:block hidden'>Jaquetas</span>
 
 
                 </Link>

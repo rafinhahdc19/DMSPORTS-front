@@ -15,14 +15,14 @@ const Product = ({ title, desc, image, value, link, slug }) => {
       <Card className='mr-auto ml-auto overflow-hidden' maxW='sm'>
         <div className='sm:p-4 p-2'>
           <Link href={link} >
-                <img
-              style={{ userSelect: 'none', borderRadius: '8px' }} // Estilo da imagem
-              width={480} // Largura da imagem
-              height={480} // Altura da imagem
-              src={process.env.NEXT_PUBLIC_BACKEND + "/image?imageUrl=" + image} // URL da imagem
-              alt='Foto do Produto' // Texto alternativo da imagem
-              className='rounded-[4px]' // Classes adicionais (se necessário)
-            />
+              <img
+                style={{ userSelect: 'none', borderRadius: '8px' }} // Estilo da imagem
+                width={480} // Largura da imagem
+                height={480} // Altura da imagem
+                src={(process.env.NEXT_PUBLIC_BACKEND + "/image?imageUrl=" + image).replace("medium","small")} // URL da imagem
+                alt='Foto do Produto' // Texto alternativo da imagem
+                className='rounded-[4px]' // Classes adicionais (se necessário)
+              />
             <div style={{ userSelect: 'none' }} className='relative md:py-1 py-3 h-full'>
               <div className='mb-auto'>
                 <Box style={{ wordBreak: 'break-word' }}>
