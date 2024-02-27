@@ -103,7 +103,7 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
             </div>
           </div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:hidden md:pb-0 md:mt-0 ${navbar ? 'p-9 md:p-0 block' : 'hidden'
+            className={`flex-1 justify-self-center pb-3 mt-2 md:hidden md:pb-0 md:mt-0 ${navbar ? 'p-9 md:p-0 block' : 'hidden'
               }`}
           >
             <ul className="h-screen md:h-auto items-center justify-center md:flex ">
