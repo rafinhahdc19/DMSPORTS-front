@@ -6,7 +6,7 @@ import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, Button
 import { useToast } from '@chakra-ui/react'
 import FormatCurrency from '@/functions/moneyconvert';
 
-const Product = ({ title, desc, image, value, link, slug }) => {
+const Product = ({ title, desc, image, value, link, slug, handleImageError }) => {
   const toast = useToast()
   const originalValue = parseInt(value, 10); // Valor original
   const discountValue = (originalValue * 1.5).toString();
@@ -22,6 +22,7 @@ const Product = ({ title, desc, image, value, link, slug }) => {
                 src={(process.env.NEXT_PUBLIC_BACKEND + "/image?imageUrl=" + image).replace("medium","small")} // URL da imagem
                 alt='Foto do Produto' // Texto alternativo da imagem
                 className='rounded-[4px]' // Classes adicionais (se necessário)
+                onError={() => handleImageError(slug)}
               />
             <div style={{ userSelect: 'none' }} className='relative md:py-1 py-3 h-full'>
               <div className='mb-auto'>

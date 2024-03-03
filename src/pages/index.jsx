@@ -224,6 +224,10 @@ export default function Index() {
     }
   }, [search]);
 
+  const handleImageError = (slug) => {
+    setProducts(prevProducts => prevProducts.filter(product => product.slug !== slug));
+  };
+
   return (
     <>
       <header>
@@ -295,6 +299,7 @@ export default function Index() {
                 </div>
               </>
             )}
+            
             <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
               {items.map((item) => (
                 <Product
@@ -306,6 +311,7 @@ export default function Index() {
                   desc={item.desc}
                   value={item.value}
                   image={item.imgurl}
+                  handleImageError={handleImageError}
                 />
               ))}
             </ul>
