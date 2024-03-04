@@ -18,7 +18,7 @@ import Cookies from 'js-cookie'
 import axios from 'axios'
 import { useToast } from '@chakra-ui/react'
 import { useEffect } from 'react'
-import FormatCurrency from '@/src/moneyconvert'
+import FormatCurrency from '@/functions/moneyconvert'
 
 const EditProduct = ({ slug, oldTitle, oldDesc, oldValue, att, setAtt, oldFixado }) => {
     const formatCurrency = (value) => {

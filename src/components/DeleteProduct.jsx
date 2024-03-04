@@ -16,7 +16,7 @@ import React, { useState } from 'react'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import { useToast } from '@chakra-ui/react'
-import FormatCurrency from '@/src/moneyconvert'
+import FormatCurrency from '@/functions/moneyconvert'
 
 const DeleteProduct = ({ slug, setAtt, att, routerF }) => {
     const toast = useToast()
