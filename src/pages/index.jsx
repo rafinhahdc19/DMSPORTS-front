@@ -102,9 +102,7 @@ export default function Index() {
 
     } else {
       if (!fim) {
-        if (!search || search == "") {
-
-        } else {
+        if (!search || search === "") {
           const offset = pag * itemsPerPage;
           const limit = itemsPerPage;
 
