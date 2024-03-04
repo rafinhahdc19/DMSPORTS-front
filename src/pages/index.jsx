@@ -97,54 +97,59 @@ export default function Index() {
 
   useEffect(() => {
 
+    if (!router.isReady) {
 
-    if (!fim) {
-      if(!search || search == ""){
+    } else {
+      if (!fim) {
+        if (!search || search == "") {
 
-      }else{
-        const offset = pag * itemsPerPage;
-      const limit = itemsPerPage;
+        } else {
+          const offset = pag * itemsPerPage;
+          const limit = itemsPerPage;
 
-      fetchData(pag, search)
-        .then((data) => {
-          if (data.products && data.products.length > 0) {
-            setnotfound(false)
-            const lastItems = items.slice(-data.length);
-            const newItems = data.products.slice();
+          fetchData(pag, search)
+            .then((data) => {
+              if (data.products && data.products.length > 0) {
+                setnotfound(false)
+                const lastItems = items.slice(-data.length);
+                const newItems = data.products.slice();
 
-            const newItemsV = data?.vendido?.slice();
+                const newItemsV = data?.vendido?.slice();
 
-            if (
-              JSON.stringify(lastItems) === JSON.stringify(newItems)
-            ) {
-            } else {
-              setItems([...items, ...newItems]);
-              if (search) {
-                setItemsV([])
-              } else {
-                setItemsV([])
-                if (!data?.vendido) {
-
+                if (
+                  JSON.stringify(lastItems) === JSON.stringify(newItems)
+                ) {
                 } else {
-                  setItemsV([...newItemsV])
-                }
-              }
-            }
-          } else if (items.length <= 0) {
-            setnotfound(true)
-            setfim(true);
-          } else {
-            setnotfound(true)
-            setfim(true);
-          }
+                  if (!search || search == "") {
+                    setItems([...items, ...newItems]);
+                    if (search) {
+                      setItemsV([])
+                    } else {
+                      setItemsV([])
+                      if (!data?.vendido) {
 
-          if (data && data?.products?.length < itemsPerPage) {
-            setfim(true);
-          }
-        });
+                      } else {
+                        setItemsV([...newItemsV])
+                      }
+                    }
+                  }
+                }
+              } else if (items.length <= 0) {
+                setnotfound(true)
+                setfim(true);
+              } else {
+                setnotfound(true)
+                setfim(true);
+              }
+
+              if (data && data?.products?.length < itemsPerPage) {
+                setfim(true);
+              }
+            });
+        }
       }
     }
-  }, [changePag]);
+  }, [changePag, router]);
   useEffect(() => {
     setPag(1)
     setfim(false)
@@ -303,7 +308,7 @@ export default function Index() {
                 </div>
               </>
             )}
-            
+
             <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
               {items.map((item) => (
                 <Product
