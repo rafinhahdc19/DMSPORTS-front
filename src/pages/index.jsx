@@ -99,7 +99,10 @@ export default function Index() {
 
 
     if (!fim) {
-      const offset = pag * itemsPerPage;
+      if(!search || search == ""){
+
+      }else{
+        const offset = pag * itemsPerPage;
       const limit = itemsPerPage;
 
       fetchData(pag, search)
@@ -139,6 +142,7 @@ export default function Index() {
             setfim(true);
           }
         });
+      }
     }
   }, [changePag]);
   useEffect(() => {
@@ -183,7 +187,7 @@ export default function Index() {
         }
       });
 
-  }, [search, gatilho])
+  }, [gatilho])
 
   useEffect(() => {
     // Função para calcular o número de slides por visualização com base na largura da janela
