@@ -3,7 +3,7 @@ import FormatCurrency from '@/functions/moneyconvert'
 import Navbar from '@/components/navbar'
 import axios from 'axios'
 import Product from '@/components/products'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { Skeleton, SkeletonCircle, SkeletonText, Box, Spinner, Button, Divider } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
@@ -32,6 +32,7 @@ export default function Index() {
   const [gatilho, setgatilho] = useState(0)
 
   const itemsPerPage = 24
+  const [lastSearch, setLastSearch] = useState("");
 
   useEffect(() => {
     setPag(1)
@@ -44,14 +45,14 @@ export default function Index() {
       if (search) {
 
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
-          page: pag,
+          page: page,
           Search: search
         });
         setloading(false)
         return response.data;
       } else {
         const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND + "/products/get", {
-          page: pag,
+          page: page,
         });
         setloading(false)
         return response.data;
@@ -96,28 +97,123 @@ export default function Index() {
     if (!router.isReady) {
 
     } else {
-      if (!fim) {
+      if (!fim || lastSearch !== "") {
         if (!search || search === "") {
-          const offset = pag * itemsPerPage;
-          const limit = itemsPerPage;
+          if (lastSearch !== "") {
+            setPag(1)
+            setfim(false)
+            setItems([])
+            setLastSearch("");
 
-          fetchData(pag, search)
-            .then((data) => {
-              if (data.products && data.products.length > 0) {
-                setnotfound(false)
-                const lastItems = items.slice(-data.length);
-                const newItems = data.products.slice();
+            const offset = pag * itemsPerPage;
+            const limit = itemsPerPage;
 
-                const newItemsV = data?.vendido?.slice();
+            fetchData(1, search)
+              .then((data) => {
+                if (data.products && data.products.length > 0) {
+                  setnotfound(false)
+                  const lastItems = items.slice(-data.length);
+                  const newItems = data.products.slice();
 
-                if (
-                  JSON.stringify(lastItems) === JSON.stringify(newItems)
-                ) {
+                  const newItemsV = data?.vendido?.slice();
+
+                  if (
+                    JSON.stringify(lastItems) === JSON.stringify(newItems)
+                  ) {
+                  } else {
+                    if (!search || search === "") {
+
+
+                      setItems([...items, ...newItems]);
+                      if (search) {
+                        setItemsV([])
+                      } else {
+                        setItemsV([])
+                        if (!data?.vendido) {
+
+                        } else {
+                          setItemsV([...newItemsV])
+                        }
+                      }
+
+                    }
+                  }
+                } else if (items.length <= 0) {
+                  setnotfound(true)
+                  setfim(true);
                 } else {
-                  if (!search || search === "") {
+                  setnotfound(true)
+                  setfim(true);
+                }
 
+                if (data && data?.products?.length < itemsPerPage) {
+                  setfim(true);
+                }
+              });
+          } else {
+            const offset = pag * itemsPerPage;
+            const limit = itemsPerPage;
 
-                    setItems([...items, ...newItems]);
+            fetchData(pag, search)
+              .then((data) => {
+                if (data.products && data.products.length > 0) {
+                  setnotfound(false)
+                  const lastItems = items.slice(-data.length);
+                  const newItems = data.products.slice();
+
+                  const newItemsV = data?.vendido?.slice();
+
+                  if (
+                    JSON.stringify(lastItems) === JSON.stringify(newItems)
+                  ) {
+                  } else {
+                    if (!search || search === "") {
+                      setItems([...items, ...newItems]);
+                      if (search) {
+                        setItemsV([])
+                      } else {
+                        setItemsV([])
+                        if (!data?.vendido) {
+
+                        } else {
+                          setItemsV([...newItemsV])
+                        }
+                      }
+
+                    }
+                  }
+                } else if (items.length <= 0) {
+                  setnotfound(true)
+                  setfim(true);
+                } else {
+                  setnotfound(true)
+                  setfim(true);
+                }
+
+                if (data && data?.products?.length < itemsPerPage) {
+                  setfim(true);
+                }
+              });
+          }
+        } else {
+          if (lastSearch !== search) {
+            setPag(1)
+            setfim(false)
+            setItems([])
+            setLastSearch(search);
+            fetchData2(1, search)
+              .then((data) => {
+                if (data.products && data.products.length > 0) {
+                  setnotfound(false)
+                  const lastItems = items.slice(-data.length);
+                  const newItems = data.products.slice();
+
+                  const newItemsV = data?.vendido?.slice();
+
+                  if (
+                    JSON.stringify(lastItems) === JSON.stringify(newItems)
+                  ) {
+                  } else {
                     if (search) {
                       setItemsV([])
                     } else {
@@ -128,24 +224,64 @@ export default function Index() {
                         setItemsV([...newItemsV])
                       }
                     }
-
-
-
-
+                    setItemsS([...itemsS, ...newItems]);
                   }
-                }
-              } else if (items.length <= 0) {
-                setnotfound(true)
-                setfim(true);
-              } else {
-                setnotfound(true)
-                setfim(true);
-              }
+                } else if (itemsS.length <= 0) {
+                  setnotfound(true)
 
-              if (data && data?.products?.length < itemsPerPage) {
-                setfim(true);
-              }
-            });
+                  setfim(true);
+                } else {
+                  setnotfound(true)
+                  setfim(true);
+                }
+
+                if (data && data?.products?.length < itemsPerPage) {
+                  setfim(true);
+                }
+              });
+          }
+          else {
+            setLastSearch(search)
+            fetchData2(pag, search)
+              .then((data) => {
+                if (data.products && data.products.length > 0) {
+                  setnotfound(false)
+                  const lastItems = items.slice(-data.length);
+                  const newItems = data.products.slice();
+
+                  const newItemsV = data?.vendido?.slice();
+
+                  if (
+                    JSON.stringify(lastItems) === JSON.stringify(newItems)
+                  ) {
+                  } else {
+                    if (search) {
+                      setItemsV([])
+                    } else {
+                      setItemsV([])
+                      if (!data?.vendido) {
+
+                      } else {
+                        setItemsV([...newItemsV])
+                      }
+                    }
+                    setItemsS([...itemsS, ...newItems]);
+                  }
+                } else if (itemsS.length <= 0) {
+                  setnotfound(true)
+
+                  setfim(true);
+                } else {
+                  setnotfound(true)
+                  setfim(true);
+                }
+
+                if (data && data?.products?.length < itemsPerPage) {
+                  setfim(true);
+                }
+              });
+          }
+
         }
       }
     }
@@ -155,6 +291,7 @@ export default function Index() {
     setfim(false)
     setItems([])
     if (search && search !== "") {
+      setLastSearch(search)
       fetchData2(1, search)
         .then((data) => {
           if (data.products && data.products.length > 0) {
@@ -180,7 +317,7 @@ export default function Index() {
               }
               setItemsS([...newItems]);
             }
-          } else if (itemsS.length <= 0) {
+          } else if (items.length <= 0) {
             setnotfound(true)
             setfim(true);
           } else {
