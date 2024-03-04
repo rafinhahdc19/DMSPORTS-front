@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className="sm:flex">
                         <div className="md:mx-5 sm:text-left text-center sm:w-[50%] mr-2 w-full mb-4 sm:mb-0">
                             <h1 className=" md:text-2xl mb-1 text-lg font-medium ">Contato</h1>
-                            <h2 className=" md:text-xl text-[1rem] font-light">(31) 9792-1877</h2>
+                            <h2 className=" md:text-xl text-[1rem] font-light">(31) 99792-1877</h2>
                             <h2 className="  md:text-xl text-[1rem] font-light">dmsports.store@gmail.com</h2>
                         </div>
                         {/*

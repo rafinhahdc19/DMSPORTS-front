@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import FormatCurrency from '@/functions/moneyconvert'
+import FormatCurrency from '@/src/moneyconvert'
 import Navbar from '@/components/navbar'
 import axios from 'axios'
 import Product from '@/components/products'

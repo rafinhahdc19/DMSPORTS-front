@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Spinner } from '@chakra-ui/react';
 import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, ButtonGroup, Button, Box, Text } from '@chakra-ui/react'
 import { useToast } from '@chakra-ui/react'
-import FormatCurrency from '@/functions/moneyconvert';
+import FormatCurrency from '@/src/moneyconvert';
 
 const Product = ({ title, desc, image, value, link, slug, handleImageError }) => {
   const toast = useToast()
