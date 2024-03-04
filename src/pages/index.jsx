@@ -23,6 +23,7 @@ export default function Index() {
   const router = useRouter();
   const { search } = router.query;
   const [items, setItems] = useState([]);
+  const [itemsS, setItemsS] = useState([]);
   const [itemsV, setItemsV] = useState([]);
   const [pag, setPag] = useState(1);
   const [changePag, setChangePag] = useState(1);
@@ -30,6 +31,7 @@ export default function Index() {
   const [notfound, setnotfound] = useState(false)
   const [gatilho, setgatilho] = useState(0)
   const [stopTask, setStopTask] = useState(false)
+  const [initialPage, setInitialPage] = useState(true)
 
   const itemsPerPage = 24
 
@@ -123,6 +125,7 @@ export default function Index() {
                     if (stopTask) {
                       setStopTask(false)
                     } else {
+
                       setItems([...items, ...newItems]);
                       if (search) {
                         setItemsV([])
@@ -134,6 +137,8 @@ export default function Index() {
                           setItemsV([...newItemsV])
                         }
                       }
+
+
                     }
 
                   }
@@ -182,7 +187,7 @@ export default function Index() {
               }
             }
             setStopTask(true)
-            setItems([...newItems]);
+            setItemsS([...newItems]);
           }
         } else if (items.length <= 0) {
           setnotfound(true)
@@ -260,7 +265,7 @@ export default function Index() {
               </div>
             </div>
           </>
-        ) : items.length <= 0 ? (
+        ) : items.length <= 0 && itemsS.length <= 0 ? (
           <div className='flex mb-[15rem] justify-center pt-[2rem]'>
             <Spinner className='ml-auto mr-auto' color='blue.600' size='xl' />
           </div>
@@ -303,32 +308,53 @@ export default function Index() {
               </div>
             )}
             {!search ? (
+            <>
+
               <div className='pt-5' >
                 <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>Melhores produtos 🔥</h1>
               </div>
+              <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
+
+                {items.map((item) => (
+                  <Product
+                    key={item.id}
+                    className="ml-auto mr-auto"
+                    slug={item.slug}
+                    title={item.nome}
+                    link={"/product/" + item.slug}
+                    desc={item.desc}
+                    value={item.value}
+                    image={item.imgurl}
+                    handleImageError={handleImageError}
+                  />
+                ))}
+              </ul>
+            </>
             ) : (
               <>
                 <div className='pt-5' >
                   <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>{`Produtos com "${search}"`} 🔥</h1>
                 </div>
+                <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
+
+                {itemsS?.map((item) => (
+                  <Product
+                    key={item.id}
+                    className="ml-auto mr-auto"
+                    slug={item.slug}
+                    title={item.nome}
+                    link={"/product/" + item.slug}
+                    desc={item.desc}
+                    value={item.value}
+                    image={item.imgurl}
+                    handleImageError={handleImageError}
+                  />
+                ))}
+              </ul>
               </>
             )}
 
-            <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
-              {items.map((item) => (
-                <Product
-                  key={item.id}
-                  className="ml-auto mr-auto"
-                  slug={item.slug}
-                  title={item.nome}
-                  link={"/product/" + item.slug}
-                  desc={item.desc}
-                  value={item.value}
-                  image={item.imgurl}
-                  handleImageError={handleImageError}
-                />
-              ))}
-            </ul>
+
             <div className="text-center my-4">
               {!fim ? (
                 <Button colorScheme='whatsapp' variant='outline' onClick={() => !loading && loadMoreItems()}>
