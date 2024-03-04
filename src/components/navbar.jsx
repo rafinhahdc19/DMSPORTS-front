@@ -42,7 +42,7 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
 
               <div className=' flex  w-full '>
                 <div>
-                  <Link href="/">
+                  <Link href="/?search=">
                     <Image src={"/logo.png"} className={'md:w-[80px] md:pl-0 pl-2 object-contain md:h-[80px] w-[75px] h-[75px]'} alt='logo' width={'70'} height={'70'} />
                   </Link>
                 </div>
