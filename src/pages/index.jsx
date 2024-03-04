@@ -122,24 +122,22 @@ export default function Index() {
                 ) {
                 } else {
                   if (!search || search === "") {
-                    if (stopTask) {
-                      setStopTask(false)
+
+
+                    setItems([...items, ...newItems]);
+                    if (search) {
+                      setItemsV([])
                     } else {
+                      setItemsV([])
+                      if (!data?.vendido) {
 
-                      setItems([...items, ...newItems]);
-                      if (search) {
-                        setItemsV([])
                       } else {
-                        setItemsV([])
-                        if (!data?.vendido) {
-
-                        } else {
-                          setItemsV([...newItemsV])
-                        }
+                        setItemsV([...newItemsV])
                       }
-
-
                     }
+
+
+
 
                   }
                 }
@@ -163,45 +161,46 @@ export default function Index() {
     setPag(1)
     setfim(false)
     setItems([])
-    fetchData2(1, search)
-      .then((data) => {
-        if (data.products && data.products.length > 0) {
-          setnotfound(false)
-          const lastItems = items.slice(-data.length);
-          const newItems = data.products.slice();
+    if (search && search !== "") {
+      fetchData2(1, search)
+        .then((data) => {
+          if (data.products && data.products.length > 0) {
+            setnotfound(false)
+            const lastItems = items.slice(-data.length);
+            const newItems = data.products.slice();
 
-          const newItemsV = data?.vendido?.slice();
+            const newItemsV = data?.vendido?.slice();
 
-          if (
-            JSON.stringify(lastItems) === JSON.stringify(newItems)
-          ) {
-          } else {
-            if (search) {
-              setItemsV([])
+            if (
+              JSON.stringify(lastItems) === JSON.stringify(newItems)
+            ) {
             } else {
-              setItemsV([])
-              if (!data?.vendido) {
-
+              if (search) {
+                setItemsV([])
               } else {
-                setItemsV([...newItemsV])
+                setItemsV([])
+                if (!data?.vendido) {
+
+                } else {
+                  setItemsV([...newItemsV])
+                }
               }
+              setStopTask(true)
+              setItemsS([...newItems]);
             }
-            setStopTask(true)
-            setItemsS([...newItems]);
+          } else if (items.length <= 0) {
+            setnotfound(true)
+            setfim(true);
+          } else {
+            setnotfound(true)
+            setfim(true);
           }
-        } else if (items.length <= 0) {
-          setnotfound(true)
-          setfim(true);
-        } else {
-          setnotfound(true)
-          setfim(true);
-        }
 
-        if (data && data?.products?.length < itemsPerPage) {
-          setfim(true);
-        }
-      });
-
+          if (data && data?.products?.length < itemsPerPage) {
+            setfim(true);
+          }
+        });
+    }
   }, [gatilho])
 
   useEffect(() => {
@@ -308,28 +307,28 @@ export default function Index() {
               </div>
             )}
             {!search ? (
-            <>
+              <>
 
-              <div className='pt-5' >
-                <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>Melhores produtos 🔥</h1>
-              </div>
-              <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
+                <div className='pt-5' >
+                  <h1 className='lg:max-w-7xl px-2 pb-2 font-semibold md:text-2xl text-xl mr-auto ml-auto'>Melhores produtos 🔥</h1>
+                </div>
+                <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
 
-                {items.map((item) => (
-                  <Product
-                    key={item.id}
-                    className="ml-auto mr-auto"
-                    slug={item.slug}
-                    title={item.nome}
-                    link={"/product/" + item.slug}
-                    desc={item.desc}
-                    value={item.value}
-                    image={item.imgurl}
-                    handleImageError={handleImageError}
-                  />
-                ))}
-              </ul>
-            </>
+                  {items.map((item) => (
+                    <Product
+                      key={item.id}
+                      className="ml-auto mr-auto"
+                      slug={item.slug}
+                      title={item.nome}
+                      link={"/product/" + item.slug}
+                      desc={item.desc}
+                      value={item.value}
+                      image={item.imgurl}
+                      handleImageError={handleImageError}
+                    />
+                  ))}
+                </ul>
+              </>
             ) : (
               <>
                 <div className='pt-5' >
@@ -337,20 +336,20 @@ export default function Index() {
                 </div>
                 <ul className='px-4 grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 sm:grid-cols-2 justify-center md:gap-5 gap-2 lg:max-w-7xl mr-auto ml-auto'>
 
-                {itemsS?.map((item) => (
-                  <Product
-                    key={item.id}
-                    className="ml-auto mr-auto"
-                    slug={item.slug}
-                    title={item.nome}
-                    link={"/product/" + item.slug}
-                    desc={item.desc}
-                    value={item.value}
-                    image={item.imgurl}
-                    handleImageError={handleImageError}
-                  />
-                ))}
-              </ul>
+                  {itemsS?.map((item) => (
+                    <Product
+                      key={item.id}
+                      className="ml-auto mr-auto"
+                      slug={item.slug}
+                      title={item.nome}
+                      link={"/product/" + item.slug}
+                      desc={item.desc}
+                      value={item.value}
+                      image={item.imgurl}
+                      handleImageError={handleImageError}
+                    />
+                  ))}
+                </ul>
               </>
             )}
 
