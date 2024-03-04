@@ -30,21 +30,12 @@ export default function Index() {
   const [fim, setfim] = useState(false)
   const [notfound, setnotfound] = useState(false)
   const [gatilho, setgatilho] = useState(0)
-  const [stopTask, setStopTask] = useState(false)
-  const [initialPage, setInitialPage] = useState(true)
 
   const itemsPerPage = 24
 
-  /*useEffect(() => {
-    const hasSearchParam = router.query.hasOwnProperty('search');
-    
-    if (!hasSearchParam || !router.query.search) {
-      router.replace({
-        pathname: router.pathname,
-        query: { search: '' },
-      });
-    }
-  }, [search]);*/
+  useEffect(() => {
+    setfim(false)
+  }, [search]);
 
   const fetchData = async (page, search) => {
     try {
@@ -185,7 +176,6 @@ export default function Index() {
                   setItemsV([...newItemsV])
                 }
               }
-              setStopTask(true)
               setItemsS([...newItems]);
             }
           } else if (items.length <= 0) {
