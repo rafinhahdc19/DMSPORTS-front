@@ -29,6 +29,7 @@ export default function Index() {
   const [fim, setfim] = useState(false)
   const [notfound, setnotfound] = useState(false)
   const [gatilho, setgatilho] = useState(0)
+  const [stopTask, setStopTask] = useState(false)
 
   const itemsPerPage = 24
 
@@ -121,17 +122,22 @@ export default function Index() {
                 ) {
                 } else {
                   if (!search || search === "") {
-                    setItems([...items, ...newItems]);
-                    if (search) {
-                      setItemsV([])
+                    if (stopTask) {
+                      setStopTask(false)
                     } else {
-                      setItemsV([])
-                      if (!data?.vendido) {
-
+                      setItems([...items, ...newItems]);
+                      if (search) {
+                        setItemsV([])
                       } else {
-                        setItemsV([...newItemsV])
+                        setItemsV([])
+                        if (!data?.vendido) {
+
+                        } else {
+                          setItemsV([...newItemsV])
+                        }
                       }
                     }
+
                   }
                 }
               } else if (items.length <= 0) {
@@ -152,6 +158,7 @@ export default function Index() {
   }, [changePag, router]);
   useEffect(() => {
     setPag(1)
+    setfim(false)
     setItems([])
     fetchData2(1, search)
       .then((data) => {
@@ -176,6 +183,7 @@ export default function Index() {
                 setItemsV([...newItemsV])
               }
             }
+            setStopTask(true)
             setItems([...newItems]);
           }
         } else if (items.length <= 0) {
