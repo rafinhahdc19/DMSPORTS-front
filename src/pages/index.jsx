@@ -120,7 +120,7 @@ export default function Index() {
                   JSON.stringify(lastItems) === JSON.stringify(newItems)
                 ) {
                 } else {
-                  if (!search || search == "") {
+                  if (!search || search === "") {
                     setItems([...items, ...newItems]);
                     if (search) {
                       setItemsV([])
@@ -152,7 +152,6 @@ export default function Index() {
   }, [changePag, router]);
   useEffect(() => {
     setPag(1)
-    setfim(false)
     setItems([])
     fetchData2(1, search)
       .then((data) => {
