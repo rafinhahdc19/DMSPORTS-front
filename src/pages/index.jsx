@@ -34,7 +34,9 @@ export default function Index() {
   const itemsPerPage = 24
 
   useEffect(() => {
+    setPag(1)
     setfim(false)
+    setItems([])
   }, [search]);
 
   const fetchData = async (page, search) => {
