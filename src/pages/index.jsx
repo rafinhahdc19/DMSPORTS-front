@@ -147,7 +147,7 @@ export default function Index() {
         }
       }
     }
-  }, [changePag, router]);
+  }, [changePag, router, search]);
   useEffect(() => {
     setPag(1)
     setfim(false)
