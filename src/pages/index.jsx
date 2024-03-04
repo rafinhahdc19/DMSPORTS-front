@@ -178,7 +178,7 @@ export default function Index() {
               }
               setItemsS([...newItems]);
             }
-          } else if (items.length <= 0) {
+          } else if (itemsS.length <= 0) {
             setnotfound(true)
             setfim(true);
           } else {
