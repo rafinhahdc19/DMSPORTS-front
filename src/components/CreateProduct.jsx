@@ -158,7 +158,7 @@ const CreateProduct = () => {
             >
                 <ModalOverlay />
                 <ModalContent maxW="90vw">
-                    <ModalHeader>Crie um novo Cupom</ModalHeader>
+                    <ModalHeader>Crie um novo Produto</ModalHeader>
                     {erro != "" ? (
                         <div className='lg:w-[87%] md:w-[83%] px-2 w-full ml-auto mr-auto'>
                             <Alert className='rounded-lg mb-2' status='error'>
