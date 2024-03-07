@@ -177,6 +177,16 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
 
                 </Link>
               </li>
+              <li className="pb-3 md:hidden text-base text-black py-3 px-6 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
+                <Link className='flex' href={"/?search=" + encodeURIComponent("2024/25")} onClick={() => setNavbar(!navbar)}>
+
+                  <span className='mt-auto mb-auto text-sm block md:hidden'>2024/25</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 mt-auto mb-auto">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                  </svg>
+
+
+                </Link>
+              </li>
               <AuthVerifyNotPush>
                 <li className="pb-3 md:hidden text-base text-black py-3 px-6 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
                   <Link className='flex' href={"/painel/admin"} onClick={() => setNavbar(!navbar)}>
@@ -248,6 +258,14 @@ const Navbar = ({ search, att, gatilho, setgatilho }) => {
                 <Link className='flex' href={"/?search=" + encodeURIComponent("Short")} onClick={() => setNavbar(!navbar)}>
 
                   <span className='mt-auto mb-auto md:block hidden'>Shorts</span>
+
+
+                </Link>
+              </li>
+              <li className="duration-200 ease-in-out cursor-pointer md:block hidden text-base text-black px-2 text-center  border-b md:border-b-0  focus:bg-gray-200 rounded-sm   border-black   md:hover:bg-transparent">
+                <Link className='flex' href={"/?search=" + encodeURIComponent("2024/25")} onClick={() => setNavbar(!navbar)}>
+
+                  <span className='mt-auto mb-auto md:block hidden'>2024/25</span>
 
 
                 </Link>
