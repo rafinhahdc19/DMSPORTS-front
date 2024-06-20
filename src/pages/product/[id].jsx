@@ -209,13 +209,6 @@ const Index = () => {
                                                     Adicionar ao carrinho
                                                 </button>
                                             </li>
-                                            <li>
-
-                                                <button disabled={loading} onClick={() => getTokenForPay()} className='w-full bg-green-100 hover:bg-green-50 text-green-700 duration-200 font-medium mr-auto ml-auto ease-in-out rounded-md p-2'>
-                                                    Comprar agora
-                                                </button>
-
-                                            </li>
                                         </ul>
 
                                     </div>
